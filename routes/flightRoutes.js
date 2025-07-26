@@ -30,4 +30,15 @@ router.get('/search', async (req, res) => {
   }
 });
 
+// Search all endpoint
+router.get('/all', async (req, res) => {
+  try {
+    const flights = await Flight.find();
+    res.json(flights);
+  } catch (err) {
+    res.status(500).json({ message: 'Flights not loaded', error: err.message });
+  }
+});
+
+
 export default router;
