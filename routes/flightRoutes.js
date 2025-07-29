@@ -40,5 +40,17 @@ router.get('/all', async (req, res) => {
   }
 });
 
+// Single flight by ID
+router.get('/:id', async (req, res) => {
+  try {
+    const flight = await Flight.findById(req.params.id);
+    if (!flight) {
+      return res.status(404).json({ message: 'Flight not found' });
+    }
+    res.json(flight);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching flight', error: err.message });
+  }
+});
 
 export default router;

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const flightSchema = new mongoose.Schema({
-  flightNumber: {
+  pnr: {
     type: String,
     required: true,
     unique: true
